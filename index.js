@@ -3,6 +3,7 @@
 //https://github.com/SBoudrias/Inquirer.js/blob/master/packages/inquirer/examples/recursive.js
 //video de referencia: https://www.youtube.com/watch?v=zPDqcOxwovA&list=PLCKuOXG0bPi2HgUouLZ0NMmvXrW4zYD7y&index=5
 //pagina con documentacion: https://www.npmjs.com/package/inquirer
+//libreria util: https://ourcodeworld.co/articulos/leer/298/como-mostrar-mensajes-coloridos-en-la-consola-en-nodejs
 
 
 const inquirer = require('inquirer');
