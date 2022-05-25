@@ -12,9 +12,25 @@ const TipoUsuario = [
         type: 'list',
         name: 'Usuario',
         message: 'Que tipo de usuario eres',
-        choices: ['Cliente', 'Representante de Taller']
+        choices: ['Cliente', 'Representante de Taller','Salir']
     }
 ]
+
+const Voler=[
+    {
+        type:'list',
+        name: 'Volver',
+        choices: ['Volver']
+    }
+]
+
+const Cerrarv =[
+    {
+        type:'list',
+        name: 'VolverC',
+        choices: ['Volver','Cerrar']   
+    }
+] 
 
 // preguntas para el usuario cliente
 const VistaTaller = [
@@ -22,7 +38,7 @@ const VistaTaller = [
         type: 'list',
         name: 'VerTaller',
         message: 'Que desea hacer',
-        choices: ['Ver Talleres Disponibles','Revisar agendamiento' ,'Salir']
+        choices: ['Ver Talleres Disponibles','Revisar agendamiento' ,'Volver','Salir']
     }
 ]
 
@@ -37,7 +53,7 @@ const CitasD = [
     {
         type: 'list',
         name: 'listado',
-        choices: ['Cita1','Cita2','Cita3','Cita4']
+        choices: ['Cita1','Cita2','Cita3','Cita4','','Volver','Salir']
     }
 ]
 const ListaTallers = [
@@ -45,7 +61,7 @@ const ListaTallers = [
         type: 'list',
         name: 'VerTaller',
         message: 'escoga al taller al que desea ingresar',
-        choices: ['Taller1', 'Taller2','Taller3','Taller4']
+        choices: ['Taller1', 'Taller2','Taller3','Taller4','','Volver','Salir']
     }
 ]
 
@@ -141,7 +157,7 @@ const OptTaller = [
     {
         type: 'list',
         name: 'Opciones',
-        choices: ['Crear Taller','Ver taller']
+        choices: ['Crear Taller','Ver taller','Volver','Salir']
     }
 ]
 
@@ -156,7 +172,7 @@ const VerT=[
     {
         type: 'list',
         name: 'Vertalleres',
-        choices: ['Editar Taller', 'Ver Citas']
+        choices: ['Editar Taller', 'Ver Citas','','Volver','Salir']
     }
 ]
 
@@ -167,6 +183,15 @@ const VerC = [
         choices: ['Cita1', 'Cita2', 'Cita3'] 
     }
 ]
+
+const Edit = [
+    {
+        type: 'list',
+        name: 'EditT',
+        choices: ['Nombre', 'Direccion', 'Telefono','Representante','Servicios','Terminar','Salir'] 
+    }
+]
+
 
 
 function main() {
@@ -179,9 +204,14 @@ function main() {
       if (answers.Usuario === 'Cliente') {
         console.log('Usuario identificado como Cliente');
         VerTalleres();
-      } else {
-        console.log('Usuario identificado como Representante de Taller');
-        OptcionesRepresentante();
+      }else{
+        if(answers.Usuario == 'Representante de Taller'){
+            console.log('Usuario identificado como Representante de Taller');
+            OptcionesRepresentante();
+          }else {
+            console.log('Saliendo...');
+            return 0;   
+         }
       }
     });
   }
@@ -197,10 +227,16 @@ function main() {
             console.log('Busqueda de citas disponibles');
             Agendamiento();
           }
+          else{
+            if (answers.VerTaller === 'Volver') {
+                console.log('Volviendo...');
+                main(); 
+          }
           else {
-            console.log('Volviendo al inicio...');
-            main();
+            console.log('Saliendo...');
+            return 0;
             }
+        }
         }
     });
   }
@@ -210,36 +246,55 @@ function main() {
     inquirer.prompt(Agenda).then((answers)=>{
         console.log(`Citas disponibles para el usuario:`)
         inquirer.prompt(CitasD).then((answers)=>{
-            console.log(`Datos del taller:`, answers);
-            console.log(`datos de la cita`);
-            inquirer.prompt(Cita).then((answers)=>{
-                console.log(`Desea eliminar la cita?`);
-                if (answers.CitaI === 'Si') {
-                    console.log(`Cita eliminada`)
-                    Agendamiento();
-                  } else {
-                    console.log('Volviendo a citas disponibles');
-                    Agendamiento();
-                  }
-            })
-            
-        })
+            if(answers.listado=== 'Volver'){
+                console.log('Volviendo...');
+                VerTalleres();
+            }else{
+                if(answers.listado === 'Salir'){
+                    console.log('Saliendo...');
+                    return 0;
+                }else{
+                    console.log(`Datos del taller:`, answers);
+                    console.log(`datos de la cita`);
+                    inquirer.prompt(Cita).then((answers)=>{
+                        console.log(`Desea eliminar la cita?`);
+                        if (answers.CitaI === 'Si') {
+                            console.log(`Cita eliminada`)
+                            Agendamiento();
+                          } else {
+                            console.log('Volviendo a citas disponibles');
+                            Agendamiento();
+                          }
+                    });       
+                }
+            }
+        });
     })
   }
 
   function ListaTaller() {
     inquirer.prompt(ListaTallers).then((answers) => {
-        console.log(`Datos del taller:`, answers);
-        console.log(`telefono, dirreccion, servicios`);
-        inquirer.prompt(Cita).then((answers)=>{
-            console.log(`Desea agendar una cita con este taller`);
-            if (answers.CitaI === 'Si') {
-                PosibleCita();
-              } else {
-                console.log('Volviendo a talleres disponibles');
-                ListaTaller();
-              }
-        })  
+        if(answers.VerTaller === 'Volver'){
+            console.log('Volviendo...');
+            VerTalleres();
+        }else{
+            if(answers.VerTaller === 'Salir'){
+                console.log('Saliendo...');
+                return 0;
+            }else{
+                console.log(`Datos del taller:`, answers);
+                console.log(`telefono, dirreccion, servicios`);
+                inquirer.prompt(Cita).then((answers)=>{
+                    console.log(`Desea agendar una cita con este taller`);
+                    if (answers.CitaI === 'Si') {
+                        PosibleCita();
+                      } else {
+                        console.log('Volviendo a talleres disponibles');
+                        ListaTaller();
+                      }
+                })  
+            }
+        }
     })   
   }
 
@@ -259,14 +314,25 @@ function main() {
         if (answers.Opciones === 'Crear Taller') {
             CrearTaller();
           }
-          else{
-            VerTaller();
-            }
+        else{
+            if(answers.Opciones === 'Ver taller'){
+                VerTaller();
+            }else{
+                if(answers.Opciones === 'Volver'){
+                    console.log('Volviendo...');
+                    IdentificaUsuario();
+                }else{
+                    console.log('Saliendo...');
+                    return 0;
+                }
+            }    
+        }
     });
   }
 
   function CrearTaller(){
     inquirer.prompt(CTaller).then((TallerN)=>{
+    console.log('El taller ha sido creado con los datos .....')
     ServiciosTaller()
     })
   }
@@ -278,6 +344,19 @@ function main() {
           ServiciosTaller();
         } else {  
           console.log('Los servicion del Taler son:', output.join(', '));
+          OptcionesRepresentante()
+        }
+    })
+  }
+
+  function ServiciosTaller2(){
+    inquirer.prompt(ServiciosT).then((answers)=>{
+        output.push(answers.Servicio);
+        if (answers.ServicioN) {
+            ServiciosTaller2();
+        } else {  
+          console.log('Los servicion del Taler son:', output.join(', '));
+          ElegirEdit();
         }
     })
   }
@@ -286,18 +365,70 @@ function main() {
       inquirer.prompt(IngreseTaller).then((answers)=>{
           console.log('datos del taller', answers)
           inquirer.prompt(VerT).then((answers)=>{
-            if (answers.Opciones === 'Editar Taller') {
+            if (answers.Vertalleres === 'Editar Taller') {
                 console.log('opciones para editar el taller')
-              }
-              else{
-                inquirer.prompt(VerC).then((answers)=>{
-                    console.log('datos de la cita' ,answers);
-                    console.log('datos especificos')
-                })
+                ElegirEdit();
+              }else{
+                if (answers.Vertalleres === 'Ver Citas'){
+                    inquirer.prompt(VerC).then((answers)=>{
+                        console.log('datos de la cita' ,answers);
+                        console.log('datos especificos')
+                    })
+                }else{
+                    if (answers.Vertalleres === 'Volver'){
+                        console.log('Volviendo...');
+                        OptcionesRepresentante();  
+                    }else{
+                        console.log('Saliendo...');
+                        return 0;
+                    }
                 }
+              }
+
           })
 
       })
   }
   
-main();
+  function ElegirEdit(){
+    inquirer.prompt(Edit).then((answers)=>{
+        if(answers.EditT === 'Nombre'){
+            inquirer.prompt(CTaller[0]).then((answers)=>{
+                ElegirEdit();    
+            })
+        }else{
+            if(answers.EditT === 'Direccion'){
+                inquirer.prompt(CTaller[1]).then((answers)=>{ 
+                    ElegirEdit();  
+                })
+            }else{
+                if(answers.EditT === 'Telefono'){
+                    inquirer.prompt(CTaller[2]).then((answers)=>{
+                        ElegirEdit();   
+                    })
+                }else{
+                    if(answers.EditT === 'Representante'){
+                        inquirer.prompt(CTaller[3]).then((answers)=>{ 
+                            ElegirEdit();  
+                        })
+                    }else{
+                        if(answers.EditT === 'Servicios'){
+                            ServiciosTaller2();
+                    }else{
+                        if(answers.EditT === 'Terminar'){
+                            console.log(`Datos cambiados`);
+                            console.log(`Mostrar datos de taller ahora`);
+                            OptcionesRepresentante()
+                        }else{
+                            console.log(`No se edito el taller`);
+                            OptcionesRepresentante()
+                        }
+                    } 
+                    }
+                }
+            }
+        }
+    })
+  }
+
+  main();
