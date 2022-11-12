@@ -5,25 +5,30 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class reg_usuario : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reg_usuario)
 
+        //conexion a la base de datos
+        val db = FirebaseFirestore.getInstance()
+
         supportActionBar?.hide()
         this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         //Permitir el cambio de interfaz a usuario mediante boton
-        val btn: Button = findViewById(R.id.button7 )
-        btn.setOnClickListener{
+        val register: Button = findViewById(R.id.button7 )
+        register.setOnClickListener{
 
             val intent: Intent = Intent(this, reg_exito:: class.java)
             startActivity(intent)
             finish()
         }
-        val btn2: Button = findViewById(R.id.button8 )
-        btn2.setOnClickListener{
+        val cancel: Button = findViewById(R.id.button8 )
+        cancel.setOnClickListener{
 
             val intent: Intent = Intent(this, inicio_usuario:: class.java)
             startActivity(intent)
