@@ -47,7 +47,7 @@ class reg_usuario : AppCompatActivity() {
             ) {
                 //if(contra.text.equals(rContra)){
                 val dato = hashMapOf(
-                    //"ci" to CI.text,
+                    "ci" to ci.text.toString(),
                     "name" to nombre.text.toString(),
                     "lastname" to apellido.text.toString(),
                     "email" to correo.text.toString(),
@@ -57,7 +57,7 @@ class reg_usuario : AppCompatActivity() {
                     "password" to contra.text.toString(),
                     "rol" to "paciente"
                 )
-                db.collection("Usuarios").document(ci.text.toString())
+                db.collection("Usuarios").document(correo.text.toString())
                     .set(dato)
                     .addOnSuccessListener {
                         val intent: Intent = Intent(this, reg_exito::class.java)
@@ -77,8 +77,7 @@ class reg_usuario : AppCompatActivity() {
                     Toast.makeText(this,"las contraseñas no son iguales",Toast.LENGTH_SHORT).show()
                 }*/
             } else {
-                Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT).show()
 
             }
 
