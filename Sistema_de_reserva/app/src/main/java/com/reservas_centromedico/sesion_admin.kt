@@ -13,7 +13,6 @@ class sesion_admin : AppCompatActivity() {
         //Si el administrador presiona salir regresa a pantalla principal
         val btn: Button = findViewById(R.id.button20)
         btn.setOnClickListener{
-
             val intent: Intent = Intent(this, main_screen:: class.java)
             startActivity(intent)
             finish()

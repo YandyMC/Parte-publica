@@ -65,11 +65,7 @@ class reg_usuario : AppCompatActivity() {
                         finish()
                     }
                     .addOnFailureListener { e ->
-                        Log.w(
-                            TAG,
-                            "hubo un error en el registro del usuario",
-                            e
-                        )
+                        Log.w(TAG, "hubo un error en el registro del usuario", e)
                     }
 
 

@@ -31,13 +31,13 @@ class inicio_admin : AppCompatActivity() {
         //Si el administrador presiona INGRESAR ingresa a pantalla sesion_admin
         alogin.setOnClickListener{
             if (acorreo.text.isNotEmpty() && aconraseña.text.isNotEmpty()){
-                db.collection("Usuarios").whereEqualTo("email",acorreo).addSnapshotListener()
+                val intent: Intent = Intent(this, sesion_admin:: class.java)
+                startActivity(intent)
+                finish()
+                //db.collection("Usuarios").whereEqualTo("email",acorreo).addSnapshotListener()
             }else{
                 Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT).show()
             }
-            val intent: Intent = Intent(this, sesion_admin:: class.java)
-            startActivity(intent)
-            finish()
         }
     }
     //Asignar que el boton atras regrese a la pantalla principal

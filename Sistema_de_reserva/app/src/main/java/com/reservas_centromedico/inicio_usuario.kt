@@ -44,7 +44,7 @@ class inicio_usuario : AppCompatActivity() {
         //Si el usuario inicia sesion, INGRESAR al acceso restringido usuario
         login.setOnClickListener{
             if (ucorreo.text.isNotEmpty() && uconraseña.text.isNotEmpty()){
-                db.collection("Usuarios").whereEqualTo("email",ucorreo).addSnapshotListener()
+                //db.collection("Usuarios").whereEqualTo("email",ucorreo).addSnapshotListener()
             }else{
                 Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT).show()
             }

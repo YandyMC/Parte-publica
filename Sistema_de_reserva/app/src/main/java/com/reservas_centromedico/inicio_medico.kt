@@ -33,7 +33,7 @@ class inicio_medico : AppCompatActivity() {
         //Si el MEDICO presiona ingresar, pantalla de sesion medico
         mlogin.setOnClickListener{
             if (mcorreo.text.isNotEmpty() && mconraseña.text.isNotEmpty()){
-                db.collection("Usuarios").whereEqualTo("email",ucorreo).addSnapshotListener()
+                //db.collection("Usuarios").whereEqualTo("email",ucorreo).addSnapshotListener()
             }else{
                 Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT).show()
             }
