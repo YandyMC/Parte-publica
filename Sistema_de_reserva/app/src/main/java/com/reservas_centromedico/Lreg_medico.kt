@@ -65,8 +65,6 @@ class Lreg_medico : AppCompatActivity() {
                     .addOnFailureListener { e ->
                         Log.w(ContentValues.TAG, "hubo un error en el registro del usuario", e)
                     }
-
-
                 /*}else{
                     Toast.makeText(this,"las contraseñas no son iguales",Toast.LENGTH_SHORT).show()
                 }*/
