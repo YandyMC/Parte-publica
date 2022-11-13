@@ -58,7 +58,7 @@ class Lreg_medico : AppCompatActivity() {
                 db.collection("Usuarios").document(ci.text.toString())
                     .set(dato)
                     .addOnSuccessListener {
-                        val intent: Intent = Intent(this, reg_exito::class.java)
+                        val intent: Intent = Intent(this, exito_regmedico:: class.java)
                         startActivity(intent)
                         finish()
                     }
