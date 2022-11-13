@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#76858F"
-    tools:context=".medico_vercita">
+    tools:context=".medico_vercita2">
 
     <EditText
         android:id="@+id/editTextTextPersonName34"
@@ -191,7 +191,7 @@
         android:id="@+id/textView35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Formulario de cita médica:"
+        android:text="Formulario de cita médica 2:"
         android:textColor="#120C0C"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -283,5 +283,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.247" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

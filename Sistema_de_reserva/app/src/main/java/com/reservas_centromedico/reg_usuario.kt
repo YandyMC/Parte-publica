@@ -19,8 +19,8 @@ class reg_usuario : AppCompatActivity() {
         //conexion a la base de datos
         val db = FirebaseFirestore.getInstance()
         //botones
-        val register: Button = findViewById(R.id.button7 )
-        val cancel: Button = findViewById(R.id.button8 )
+        val register: Button = findViewById(R.id.button7)
+        val cancel: Button = findViewById(R.id.button8)
         //datos de registro
         val ci: EditText = findViewById(R.id.CI)
         val nombre: EditText = findViewById(R.id.name)
@@ -33,48 +33,59 @@ class reg_usuario : AppCompatActivity() {
         val rContra: EditText = findViewById(R.id.rpassword)
 
         supportActionBar?.hide()
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        this.window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
 
         //Permitir el cambio de interfaz a usuario mediante boton
         //realizar registro
-        register.setOnClickListener{
-            if(ci.text.isNotEmpty() && nombre.text.isNotEmpty() && apellido.text.isNotEmpty() && correo.text.isNotEmpty()
+        register.setOnClickListener {
+            if (ci.text.isNotEmpty() && nombre.text.isNotEmpty() && apellido.text.isNotEmpty() && correo.text.isNotEmpty()
                 && fecha.text.isNotEmpty() && ciudad.text.isNotEmpty() && direccion.text.isNotEmpty() && contra.text.isNotEmpty()
-                && rContra.text.isNotEmpty()){
+                && rContra.text.isNotEmpty()
+            ) {
                 //if(contra.text.equals(rContra)){
-                    val dato = hashMapOf(
-                        //"ci" to CI.text,
-                        "name" to nombre.text.toString(),
-                        "lastname" to apellido.text.toString(),
-                        "email" to correo.text.toString(),
-                        "date" to fecha.text.toString(),
-                        "city" to ciudad.text.toString(),
-                        "direction" to direccion.text.toString(),
-                        "password" to contra.text.toString(),
-                        "rol" to "paciente")
-                    db.collection("Usuarios").document(ci.text.toString())
-                        .set(dato)
-                        .addOnSuccessListener {
-                            val intent:Intent= Intent(this, reg_exito:: class.java)
-                            startActivity(intent)
-                            finish()
-                        }
-                        .addOnFailureListener {
-                                e -> Log.w(TAG, "hubo un error en el registro del usuario", e) }
+                val dato = hashMapOf(
+                    //"ci" to CI.text,
+                    "name" to nombre.text.toString(),
+                    "lastname" to apellido.text.toString(),
+                    "email" to correo.text.toString(),
+                    "date" to fecha.text.toString(),
+                    "city" to ciudad.text.toString(),
+                    "direction" to direccion.text.toString(),
+                    "password" to contra.text.toString(),
+                    "rol" to "paciente"
+                )
+                db.collection("Usuarios").document(ci.text.toString())
+                    .set(dato)
+                    .addOnSuccessListener {
+                        val intent: Intent = Intent(this, reg_exito::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(
+                            TAG,
+                            "hubo un error en el registro del usuario",
+                            e
+                        )
+                    }
 
 
                 /*}else{
                     Toast.makeText(this,"las contraseñas no son iguales",Toast.LENGTH_SHORT).show()
                 }*/
-            }else{
-                Toast.makeText(this,"se deben rellenar todos los elementos",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT)
+                    .show()
 
             }
 
         }
         //cancelar registro
-        cancel.setOnClickListener{
-            val intent:Intent=Intent(this, inicio_usuario:: class.java)
+        cancel.setOnClickListener {
+            val intent: Intent = Intent(this, inicio_usuario::class.java)
             startActivity(intent)
             finish()
         }
@@ -83,8 +94,8 @@ class reg_usuario : AppCompatActivity() {
 
     //Asignar que el boton atras regrese a la pantalla inicio sesion usuario
     override fun onBackPressed() {
-        startActivity(Intent(this,inicio_usuario::class.java))
+        startActivity(Intent(this, inicio_usuario::class.java))
         finish()
     }
-
 }
+

@@ -35,7 +35,7 @@ class sesion_medico : AppCompatActivity() {
         //Se crea boton ir a cita2
         val btn4: Button = findViewById(R.id.button14)
         btn4.setOnClickListener{
-            val intent: Intent = Intent(this, medico_vercita:: class.java)
+            val intent: Intent = Intent(this, medico_vercita2:: class.java)
             startActivity(intent)
             finish()
         }
