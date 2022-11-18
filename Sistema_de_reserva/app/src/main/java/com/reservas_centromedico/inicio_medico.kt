@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
+
 
 class inicio_medico : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,7 @@ class inicio_medico : AppCompatActivity() {
         val mcorreo: EditText = findViewById(R.id.MedicEmail)
         val mconraseña: EditText = findViewById(R.id.MedicPassword)
         //conexion a la base de datos
-        val db = FirebaseFirestore.getInstance()
+
 
 
         //Si el MEDICO presiona salir regresa a pantalla principal

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "620472593834",
-    "project_id": "reservacita-909d8",
-    "storage_bucket": "reservacita-909d8.appspot.com"
+    "project_number": "383373144521",
+    "project_id": "rersvmed",
+    "storage_bucket": "rersvmed.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:620472593834:android:19d61547c64bff4e94cfd3",
+        "mobilesdk_app_id": "1:383373144521:android:0158685e8fde3e363df818",
         "android_client_info": {
           "package_name": "com.reservas_centromedico"
         }
       },
       "oauth_client": [
         {
-          "client_id": "620472593834-qpviss9qac4c4f99385eca6b7qdt4c7f.apps.googleusercontent.com",
+          "client_id": "383373144521-ihvke20pi47967vb677ktfurolhkk8fo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA3PMCeCd0DlYbM7-dPpG63e33FdPwL7Q4"
+          "current_key": "AIzaSyBp7XT3K5IPnsqLFXByetITpEegMq0y7yM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "620472593834-qpviss9qac4c4f99385eca6b7qdt4c7f.apps.googleusercontent.com",
+              "client_id": "383373144521-ihvke20pi47967vb677ktfurolhkk8fo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

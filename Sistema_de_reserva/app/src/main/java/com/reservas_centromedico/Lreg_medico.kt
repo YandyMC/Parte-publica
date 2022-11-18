@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
 
 class Lreg_medico : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,6 @@ class Lreg_medico : AppCompatActivity() {
         val contra: EditText = findViewById(R.id.medicRpassword)
         val rContra: EditText = findViewById(R.id.medicRpassword)
         //conexion con la base de datos
-        val db = FirebaseFirestore.getInstance()
         //Permitir el cambio de interfaz a usuario mediante boton CANCELAR
         btn.setOnClickListener{
 
@@ -39,42 +37,6 @@ class Lreg_medico : AppCompatActivity() {
         //Boton REGISTRAR
 
         btn2.setOnClickListener{
-            if (ci.text.isNotEmpty() && nombre.text.isNotEmpty() && apellido.text.isNotEmpty() && correo.text.isNotEmpty()
-                && fecha.text.isNotEmpty() && ciudad.text.isNotEmpty() && direccion.text.isNotEmpty() && contra.text.isNotEmpty()
-                && rContra.text.isNotEmpty()
-            ) {
-                //if(contra.text.equals(rContra)){
-                val dato = hashMapOf(
-                    "ci" to ci.text.toString(),
-                    "name" to nombre.text.toString(),
-                    "lastname" to apellido.text.toString(),
-                    "email" to correo.text.toString(),
-                    "date" to fecha.text.toString(),
-                    "city" to ciudad.text.toString(),
-                    "direction" to direccion.text.toString(),
-                    "password" to contra.text.toString(),
-                    "rol" to "medico"
-                )
-                db.collection("Usuarios").document(ci.text.toString())
-                    .set(dato)
-                    .addOnSuccessListener {
-                        val intent: Intent = Intent(this, exito_regmedico:: class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w(ContentValues.TAG, "hubo un error en el registro del usuario", e)
-                    }
-                /*}else{
-                    Toast.makeText(this,"las contraseñas no son iguales",Toast.LENGTH_SHORT).show()
-                }*/
-            } else {
-                Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT).show()
-
-            }
-
-
-
             val intent: Intent = Intent(this, exito_regmedico:: class.java)
             startActivity(intent)
             finish()

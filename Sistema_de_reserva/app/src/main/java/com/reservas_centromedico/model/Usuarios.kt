@@ -1,12 +1,16 @@
 package com.reservas_centromedico.model
 
 data class Usuarios(
-    val ci: String,
-    val nombre:String,
-    val apellido:String,
-    val correo:String,
-    val fecha: String,
-    val ciudad: String,
-    val contraseña: String){
-    constructor(): this("","","","","","","")
+    val cio : String? = null,
+    val username : String? = null,
+    val lastName : String? = null,
+    val email: String?= null,
+    val date: String?= null,
+    val city: String?= null,
+    val direction: String?= null,
+    val uid: String? = null
+    ){
+
 }
+
+

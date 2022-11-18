@@ -4,16 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.google.firebase.firestore.FirebaseFirestore
 
 class admin_modmedico : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_modmedico)
         //conexion con la base de datos
-        val db = FirebaseFirestore.getInstance()
         //declarar las colecciones en las que se va a trabajar
-        var SearchMedic = db.collection("Usuarios")
 
         //Boton cancelar
         val btn: Button = findViewById(R.id.button28)

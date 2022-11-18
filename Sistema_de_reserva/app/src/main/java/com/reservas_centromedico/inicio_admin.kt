@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
+
 
 class inicio_admin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,6 @@ class inicio_admin : AppCompatActivity() {
         val acorreo: EditText = findViewById(R.id.AdminEmail)
         val aconraseña: EditText = findViewById(R.id.AdminPassword)
         //conexion a la base de datps
-        val db = FirebaseFirestore.getInstance()
 
         //Si el administrador presiona salir regresa a pantalla principal
         retunra.setOnClickListener{
@@ -34,7 +33,6 @@ class inicio_admin : AppCompatActivity() {
                 val intent: Intent = Intent(this, sesion_admin:: class.java)
                 startActivity(intent)
                 finish()
-                //db.collection("Usuarios").whereEqualTo("email",acorreo).addSnapshotListener()
             }else{
                 Toast.makeText(this, "se deben rellenar todos los elementos", Toast.LENGTH_SHORT).show()
             }
